@@ -1,0 +1,211 @@
+	adr program
+out1
+	tst '*1'
+	bf l1
+	cl 'gn1'
+	out
+l1
+	bt l2
+	tst '*2'
+	bf l3
+	cl 'gn2'
+	out
+l3
+	bt l2
+	tst '*'
+	bf l4
+	cl 'ci'
+	out
+l4
+	bt l2
+	sr
+	bf l5
+	cl 'cl '
+	ci
+	out
+l5
+l2
+	r
+output
+	tst '.out'
+	bf l6
+	tst '('
+	be
+l7
+	cll out1
+	bt l7
+	set
+	be
+	tst ')'
+	be
+l6
+	bt l8
+	tst '.label'
+	bf l9
+	cl 'lb'
+	out
+	cll out1
+	be
+l9
+l8
+	bf l10
+	cl 'out'
+	out
+l10
+l11
+	r
+ex3
+	id
+	bf l12
+	cl 'cll '
+	ci
+	out
+l12
+	bt l13
+	sr
+	bf l14
+	cl 'tst '
+	ci
+	out
+l14
+	bt l13
+	tst '.id'
+	bf l15
+	cl 'id'
+	out
+l15
+	bt l13
+	tst '.number'
+	bf l16
+	cl 'num'
+	out
+l16
+	bt l13
+	tst '.string'
+	bf l17
+	cl 'sr'
+	out
+l17
+	bt l13
+	tst '('
+	bf l18
+	cll ex1
+	be
+	tst ')'
+	be
+l18
+	bt l13
+	tst '.empty'
+	bf l19
+	cl 'set'
+	out
+l19
+	bt l13
+	tst '$'
+	bf l20
+	lb
+	gn1
+	out
+	cll ex3
+	be
+	cl 'bt '
+	gn1
+	out
+	cl 'set'
+	out
+l20
+l13
+	r
+ex2
+	cll ex3
+	bf l21
+	cl 'bf '
+	gn1
+	out
+l21
+	bt l22
+	cll output
+	bf l23
+l23
+l22
+	bf l24
+l25
+	cll ex3
+	bf l26
+	cl 'be'
+	out
+l26
+	bt l27
+	cll output
+	bf l28
+l28
+l27
+	bt l25
+	set
+	be
+	lb
+	gn1
+	out
+l24
+l29
+	r
+ex1
+	cll ex2
+	bf l30
+l31
+	tst '/'
+	bf l32
+	cl 'bt '
+	gn1
+	out
+	cll ex2
+	be
+l32
+l33
+	bt l31
+	set
+	be
+	lb
+	gn1
+	out
+l30
+l34
+	r
+st
+	id
+	bf l35
+	lb
+	ci
+	out
+	tst '='
+	be
+	cll ex1
+	be
+	tst '.,'
+	be
+	cl 'r'
+	out
+l35
+l36
+	r
+program
+	tst '.syntax'
+	bf l37
+	id
+	be
+	cl 'adr '
+	ci
+	out
+l38
+	cll st
+	bt l38
+	set
+	be
+	tst '.end'
+	be
+	cl 'end'
+	out
+l37
+l39
+	r
+	end
